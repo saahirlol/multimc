@@ -1,6 +1,6 @@
 
 
-Simply pulling `ghcr.io/saahirlol/chrome:latest` should retrieve the correct image for your arch, but you can also pull specific arch images via tags.
+Simply pulling `ghcr.io/saahirlol/multimc:latest` should retrieve the correct image for your arch, but you can also pull specific arch images via tags.
 
 The architectures supported by this image are:
 
@@ -57,10 +57,10 @@ Here are some example snippets to help you get started creating a container.
 ---
 version: "2.1"
 services:
-  chrome:
+  multimc:
     privileged: true
-    image: ghcr.io/saahirlol/chromeeee:main
-    container_name: chrome
+    image: ghcr.io/saahirlol/multimc:main
+    container_name: multimc
     environment:
       - PUID=1000
       - PGID=1000
@@ -78,7 +78,7 @@ services:
 
 ```bash
 docker run -d \
-  --name=chrome \
+  --name=multimc \
   --privileged \
   -e PUID=1000 \
   -e PGID=1000 \
@@ -89,7 +89,7 @@ docker run -d \
   -v /path/to/data:/data \
   --restart unless-stopped \
   --shm-size="2gb" \
-  ghcr.io/saahirlol/chromeeee:main
+  ghcr.io/saahirlol/multimc:main
 
 ```
 
@@ -139,18 +139,18 @@ In this instance `PUID=1000` and `PGID=1000`, to find yours use `id user` as bel
 
 ## Docker Mods
 
-[![Docker Mods](https://img.shields.io/badge/dynamic/yaml?color=94398d&labelColor=555555&logoColor=ffffff&style=for-the-badge&label=chrome&query=%24.mods%5B%27chrome%27%5D.mod_count&url=https%3A%2F%2Fraw.githubusercontent.com%2Flinuxserver%2Fdocker-mods%2Fmaster%2Fmod-list.yml)](https://mods.linuxserver.io/?mod=chrome "view available mods for this container.") [![Docker Universal Mods](https://img.shields.io/badge/dynamic/yaml?color=94398d&labelColor=555555&logoColor=ffffff&style=for-the-badge&label=universal&query=%24.mods%5B%27universal%27%5D.mod_count&url=https%3A%2F%2Fraw.githubusercontent.com%2Flinuxserver%2Fdocker-mods%2Fmaster%2Fmod-list.yml)](https://mods.linuxserver.io/?mod=universal "view available universal mods.")
+[![Docker Mods](https://img.shields.io/badge/dynamic/yaml?color=94398d&labelColor=555555&logoColor=ffffff&style=for-the-badge&label=multimc&query=%24.mods%5B%27multimc%27%5D.mod_count&url=https%3A%2F%2Fraw.githubusercontent.com%2Flinuxserver%2Fdocker-mods%2Fmaster%2Fmod-list.yml)](https://mods.linuxserver.io/?mod=multimc "view available mods for this container.") [![Docker Universal Mods](https://img.shields.io/badge/dynamic/yaml?color=94398d&labelColor=555555&logoColor=ffffff&style=for-the-badge&label=universal&query=%24.mods%5B%27universal%27%5D.mod_count&url=https%3A%2F%2Fraw.githubusercontent.com%2Flinuxserver%2Fdocker-mods%2Fmaster%2Fmod-list.yml)](https://mods.linuxserver.io/?mod=universal "view available universal mods.")
 
 I  publish various [Docker Mods](https://github.com/linuxserver/docker-mods) to enable additional functionality within the containers. The list of Mods available for this image (if any) as I ll as universal mods that can be applied to any one of our images can be accessed via the dynamic badges above.
 
 ## Support Info
 
-* Shell access whilst the container is running: `docker exec -it chrome /bin/bash`
-* To monitor the logs of the container in realtime: `docker logs -f chrome`
+* Shell access whilst the container is running: `docker exec -it multimc /bin/bash`
+* To monitor the logs of the container in realtime: `docker logs -f multimc`
 * container version number
-  * `docker inspect -f '{{ index .Config.Labels "build_version" }}' chrome`
+  * `docker inspect -f '{{ index .Config.Labels "build_version" }}' multimc`
 * image version number
-  * `docker inspect -f '{{ index .Config.Labels "build_version" }}' ghcr.io/saahirlol/chrome:latest`
+  * `docker inspect -f '{{ index .Config.Labels "build_version" }}' ghcr.io/saahirlol/multimc:latest`
 
 ## Updating Info
 
@@ -161,16 +161,16 @@ Below are the instructions for updating containers:
 ### Via Docker Compose
 
 * Update all images: `docker-compose pull`
-  * or update a single image: `docker-compose pull chrome`
+  * or update a single image: `docker-compose pull multimc`
 * Let compose update all containers as necessary: `docker-compose up -d`
-  * or update a single container: `docker-compose up -d chrome`
+  * or update a single container: `docker-compose up -d multimc`
 * You can also remove the old dangling images: `docker image prune`
 
 ### Via Docker Run
 
-* Update the image: `docker pull ghcr.io/saahirlol/chrome:latest`
-* Stop the running container: `docker stop chrome`
-* Delete the container: `docker rm chrome`
+* Update the image: `docker pull ghcr.io/saahirlol/multimc:latest`
+* Stop the running container: `docker stop multimc`
+* Delete the container: `docker rm multimc`
 * Recreate a new container with the same docker run parameters as instructed above (if mapped correctly to a host folder, your `/config` folder and settings will be preserved)
 * You can also remove the old dangling images: `docker image prune`
 
@@ -182,7 +182,7 @@ Below are the instructions for updating containers:
   docker run --rm \
   -v /var/run/docker.sock:/var/run/docker.sock \
   containrrr/watchtoI r \
-  --run-once chrome
+  --run-once multimc
   ```
 
 * You can also remove the old dangling images: `docker image prune`
@@ -198,12 +198,12 @@ Below are the instructions for updating containers:
 If you want to make local modifications to these images for development purposes or just to customize the logic:
 
 ```bash
-git clone https://github.com/linuxserver/docker-chrome.git
-cd docker-chrome
+git clone https://github.com/linuxserver/docker-multimc.git
+cd docker-multimc
 docker build \
   --no-cache \
   --pull \
-  -t ghcr.io/saahirlol/chrome:latest .
+  -t ghcr.io/saahirlol/multimc:latest .
 ```
 
 The ARM variants can be built on x86_64 hardware using `multiarch/qemu-user-static`

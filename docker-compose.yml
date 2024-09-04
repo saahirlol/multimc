@@ -1,11 +1,11 @@
 version: "2.1"
 services:
-  chrome:
+  multimc:
     privileged: true
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: chrome
+    container_name: multimc
     environment:
       - PUID=1000
       - PGID=1000

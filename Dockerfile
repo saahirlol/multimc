@@ -3,12 +3,12 @@ FROM ghcr.io/linuxserver/baseimage-kasmvnc:ubuntujammy
 # set version label
 ARG BUILD_DATE
 ARG VERSION
-ARG CHROME_VERSION
+ARG MULTIMC_VERSION
 LABEL build_version="Linuxserver.io version:- ${VERSION} Build-date:- ${BUILD_DATE}"
 LABEL maintainer="thelamer"
 
 # title
-ENV TITLE="Chrome"
+ENV TITLE="MultiMC"
 
 ARG DEBIAN_FRONTEND="noninteractive"
 COPY /scripts /
