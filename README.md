@@ -71,6 +71,7 @@ services:
     ports:
       - 3000:3000
       - 3001:3001
+    shm_size: "4gb"
     restart: unless-stopped
 ```
 
@@ -88,7 +89,7 @@ docker run -d \
   -v /path/to/config:/config \
   -v /path/to/data:/data \
   --restart unless-stopped \
-  --shm-size="2gb" \
+  --shm-size="4gb" \
   ghcr.io/saahirlol/multimc:main
 
 ```
